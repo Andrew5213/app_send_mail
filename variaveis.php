@@ -17,7 +17,7 @@ $peso=62.5;
 #var do tipo bolean
 $fumante = true;#se for true aparece 1 no browser e se for false aparece vazio ou seja nada
 
-print $nome;
+$idade=21;
 ?>
 <h1>
     ficha cadastral
