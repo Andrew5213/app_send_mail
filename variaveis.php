@@ -1,4 +1,3 @@
-
 <html>
 
 <head>
@@ -9,15 +8,15 @@
 <body>
 <?php
 #variavel do tipo string
-$nome='Andrew de Oliveira Figueiredo';
+$nome = 'Andrew de Oliveira Figueiredo';
 #variavel do tipo int
-$idade=20;
+$idade = 20;
 #variavel do tipo double ou float
-$peso=62.5;
+$peso = 62.5;
 #var do tipo bolean
 $fumante = true;#se for true aparece 1 no browser e se for false aparece vazio ou seja nada
 
-$idade=21;
+$idade = 21;
 ?>
 <h1>
     ficha cadastral
