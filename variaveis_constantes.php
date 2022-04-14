@@ -7,17 +7,15 @@
 
 <body>
 <?php
-$nome='andrew';
-$cor='azul';
-$idade=20;
-$lazer='jogar video game';
-#para concatenar e so utiliza o operador ponto
+#para criar uma fução constante temos que chamar a funcao define()
 
-print 'ola '.$nome.' vi que sua cor preferida e '.$cor.', estou vendo tambem que possiu '.$idade.' anos e que gosta de '.$lazer;
-#agora vamos fazer de maneira mais facil igual como se fosse em javaScript
-print '<br/>';
-print "ola $nome vi que sua cor preferida e $cor, estou vendo tambem que possui $idade anos e que gosta de $lazer";
-echo '<hr/>'
+ define('BD_URL','endereco_bd_dev');
+ define('BD_USUARIO','usuario_dev');
+ define('BD_SENHA','senha_bd_dev');
+print BD_USUARIO;
+print BD_SENHA;
+print BD_URL;
+
 ?>
 </body>
 
