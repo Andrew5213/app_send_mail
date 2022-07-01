@@ -32,12 +32,14 @@
               Login
             </div>
             <div class="card-body">
-              <form>
+              <form action="valida_login.php" method="post"><!-aqui estamos passando onde sera procesado as acoes do form , alem disso deixamos o metodo post para nao mostar email e senha -->
+
                 <div class="form-group">
-                  <input type="email" class="form-control" placeholder="E-mail">
+                    <!-este name e para passar o valor contido no campo para o valida_login.php -->
+                  <input name="email"  type="email" class="form-control" placeholder="E-mail">
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control" placeholder="Senha">
+                  <input name="senha" type="password" class="form-control" placeholder="Senha">
                 </div>
                 <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
               </form>
