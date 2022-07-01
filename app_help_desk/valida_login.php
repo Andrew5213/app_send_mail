@@ -16,6 +16,10 @@
 //echo $_POST['email'];
 //echo '<br/>';
 //echo $_POST['senha'];
+session_start();//aqui estamos iniciando a seção
+$_SESSION['x']='oi , sou o valor de uma sessao';
+print_r($_SESSION);
+echo "<br>";
 //variavel para verificar autenticação
 $usuario_autenticado = false;
 //como nao adquiri conhecimento em banco de dados vamos deixar o sistema em um arrar
@@ -36,7 +40,11 @@ foreach ($usuarios_array as $user) {
 }
 if ($usuario_autenticado==true){
     echo "usuario autenticado ";
+    $_SESSION['autenticado']='sim';
+
 }else{
     header('location: index.php?login=erro');//para recarregar a pagina
+    $_SESSION['autenticado']='não';
+
 }
 ?>

@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] !='sim'){
+    header('location: index.php?login=erro2');//para recarregar a pagina
+
+}
+
+?>
 <html>
 <head>
     <meta charset="utf-8"/>
@@ -49,6 +57,13 @@
                                     Usuarios ou senha invalidos
                                 </div>
                                 <?php } ?>
+                            <?php
+                            if (isset($_GET['login']) && $_GET['login'] == 'erro2') {
+                                ?>
+                                <div class="text-danger">
+                                    faca login antes de acessar as paginas
+                                </div>
+                            <?php } ?>
                         </div>
                         <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
                     </form>
