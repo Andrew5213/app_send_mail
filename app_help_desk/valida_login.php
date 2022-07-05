@@ -1,50 +1,59 @@
 <?php
-//echo "oi estamos aqui "
-//agora vamos recuperar as informações com a variavel super global GET
-//echo "<pre>";
-//print_r($_GET);
-//echo "<pre/>";
-//echo '<br/>';
-//echo $_GET['email'];
-//echo '<br/>';
-//echo $_GET['senha'];
-//aqui vamos modificar para deixar mais seguro
-//vamos verificar o post agora
 
-//print_r($_POST);
-//echo '<br/>';
-//echo $_POST['email'];
-//echo '<br/>';
-//echo $_POST['senha'];
-session_start();//aqui estamos iniciando a seção
-$_SESSION['x']='oi , sou o valor de uma sessao';
+session_start();
+$_SESSION['x'] = 'Oi, eu sou um valor de sessão!';
 print_r($_SESSION);
-echo "<br>";
-//variavel para verificar autenticação
+echo '<hr/>';
+print_r($_SESSION['y']);
+
+
+//VARIAVEL QUE VERIFICA SE A AUTENTICAÇÃO FOI REALIZADA
 $usuario_autenticado = false;
-//como nao adquiri conhecimento em banco de dados vamos deixar o sistema em um arrar
-$usuarios_array = [
-    ['email' => 'andrewoliveira282@gmail.com', 'senha' => '1234'],
-    ['email' => 'andrewoliveira28@gmail.com', 'senha' => 'abcd']
 
-];
-//echo '<pre/>';
-//print_r($usuarios_array);
-//echo '<pre/>';//este aqui era so para ver o array
-foreach ($usuarios_array as $user) {
+//USUARIOS DO SISTEMA
+$usuarios_app = array(
+    array('email' => 'adm@teste.com.br', 'senha' => '123456'),
+    array('email' => 'user@teste.com.br', 'senha' => 'abcd')
+);
+/*
 
-    //vamos fazer uma verificação pra ver se oq esta no form é igual o app
-    if ($user['email'] == $_POST['email'] && $user['senha'] == $_POST['senha']) {
+echo '<pre>';
+print_r($usuarios_app);
+echo '</pre>';
+
+*/
+
+foreach($usuarios_app as $user){
+    /*
+    echo 'Usuario app: ' . $user['email'] . '/' . $user['senha'];
+    echo '<br />';
+    echo 'Usuario form: ' . $_POST['email'] . '/' . $_POST['senha'];
+    echo '<hr />';
+    */
+    if($user['email'] == $_POST['email'] && $user['senha'] == $_POST['senha']){
         $usuario_autenticado = true;
     }
 }
-if ($usuario_autenticado==true){
-    echo "usuario autenticado ";
-    $_SESSION['autenticado']='sim';
 
+if($usuario_autenticado){
+    echo 'Usuário autenticado.';
+
+    $_SESSION['autenticado'] = 'SIM';
+    header('Location: home.php');
 }else{
-    header('location: index.php?login=erro');//para recarregar a pagina
-    $_SESSION['autenticado']='não';
-
+    $_SESSION['autenticado'] = 'NÃO';
+    header('Location: index.php?login=erro');
 }
+
+
+/*
+print_r($_GET)
+
+echo '<br />'
+echo $_GET['email']
+echo '<br />'
+echo $_GET['senha']
+print_r($_POST);
+*/
+
 ?>

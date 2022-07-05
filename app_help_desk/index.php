@@ -1,18 +1,11 @@
-<?php
-session_start();
-if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] !='sim'){
-    header('location: index.php?login=erro2');//para recarregar a pagina
 
-}
 
-?>
 <html>
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
     <title>App Help Desk</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <style>
         .card-login {
@@ -41,30 +34,29 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] !='sim'){
                     Login
                 </div>
                 <div class="card-body">
-                    <form action="valida_login.php" method="post"><!-aqui estamos passando onde sera procesado as acoes
-                        do form , alem disso deixamos o metodo post para nao mostar email e senha -->
-
+                    <form action="valida_login.php" method="post">
                         <div class="form-group">
-                            <!-este name e para passar o valor contido no campo para o valida_login.php -->
                             <input name="email" type="email" class="form-control" placeholder="E-mail">
                         </div>
                         <div class="form-group">
                             <input name="senha" type="password" class="form-control" placeholder="Senha">
-                            <?php
-                            if (isset($_GET['login']) && $_GET['login'] == 'erro') {
-                                ?>
-                                <div class="text-danger">
-                                    Usuarios ou senha invalidos
-                                </div>
-                                <?php } ?>
-                            <?php
-                            if (isset($_GET['login']) && $_GET['login'] == 'erro2') {
-                                ?>
-                                <div class="text-danger">
-                                    faca login antes de acessar as paginas
-                                </div>
-                            <?php } ?>
                         </div>
+
+                        <?php if(isset($_GET['login']) && $_GET['login'] == 'erro'){?>
+
+                            <div class="text-danger">
+                                Usuário ou senha inválido(s)
+                            </div>
+
+                        <?php } ?>
+
+
+                            <div class="text-danger">
+                                Por favor, faça login antes de acessar as páginas protegidas
+                            </div>
+
+
+
                         <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
                     </form>
                 </div>
