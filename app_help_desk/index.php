@@ -51,9 +51,7 @@
                         <?php } ?>
 
 
-                            <div class="text-danger">
-                                Por favor, faça login antes de acessar as páginas protegidas
-                            </div>
+
 
 
 
