@@ -1,7 +1,7 @@
 <?php
-echo "<pre>";
-print_r($_POST);
-echo "<pre/>";
+//echo "<pre>";
+//print_r($_POST);
+//echo "<pre/>";
 //este aqui e o metodo que abri chamado
 // vamos agora armazzenar essas informações no arquivo texto
 $arquivo = fopen('arquivo.hd', 'a');//aqui e para criar um novo arquivo
@@ -13,5 +13,7 @@ $texto = $titulo . '#' . $categoria . '#' . $descricao.PHP_EOL;//este php_eol e 
 //echo $texto;
 fwrite($arquivo,$texto);//aqui estamos gravando no arquivo
 fclose($arquivo);//aqui estamos fechando o arquivo.
+header('Location: abrir_chamado.php');
+
 
 ?>
