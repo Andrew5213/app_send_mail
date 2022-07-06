@@ -1,7 +1,5 @@
 <?php
-//echo "<pre>";
-//print_r($_POST);
-//echo "<pre/>";
+session_start();
 //este aqui e o metodo que abri chamado
 // vamos agora armazzenar essas informações no arquivo texto
 $arquivo = fopen('arquivo.hd', 'a');//aqui e para criar um novo arquivo
@@ -9,9 +7,9 @@ $arquivo = fopen('arquivo.hd', 'a');//aqui e para criar um novo arquivo
 $titulo = str_replace('#', '-', $_POST['titulo']);
 $categoria = str_replace('#', '-', $_POST['categoria']);
 $descricao = str_replace('#', '-', $_POST['descricao']);
-$texto = $titulo . '#' . $categoria . '#' . $descricao.PHP_EOL;//este php_eol e para fazer quebra de linha
+$texto = $_SESSION['id'] . '#' . $titulo . '#' . $categoria . '#' . $descricao . PHP_EOL;//este php_eol e para fazer quebra de linha
 //echo $texto;
-fwrite($arquivo,$texto);//aqui estamos gravando no arquivo
+fwrite($arquivo, $texto);//aqui estamos gravando no arquivo
 fclose($arquivo);//aqui estamos fechando o arquivo.
 header('Location: abrir_chamado.php');
 

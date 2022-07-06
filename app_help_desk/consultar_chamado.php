@@ -58,15 +58,22 @@ fclose($arquivo);//aqui estamos fechando o arquivo
                     <?php foreach ($chamados as $chamado){?>
                         <?php
                         $chamado_dados =explode('#',$chamado);//separa os dados do vetor quando tem o #
-                        if (count($chamado_dados)<3){
+                        //vamos filrar o id para oq pode ser visto
+                        if($_SESSION['perfil_id'] == 2){
+                            //apenas exibir se foi criado pelo mesmo usuario
+                            if($chamado_dados[0] != $_SESSION['id']){
+                                continue;
+                            }
+                        }
+                        if (count($chamado_dados)<4){
                             continue;
                         }
                         ?>
                     <div class="card mb-3 bg-light">
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $chamado_dados[0]?></h5>
-                            <h6 class="card-subtitle mb-2 text-muted"><?php echo $chamado_dados[1]?></h6>
-                            <p class="card-text"><?php echo $chamado_dados[2]?></p>
+                            <h5 class="card-title"><?php echo $chamado_dados[1]?></h5>
+                            <h6 class="card-subtitle mb-2 text-muted"><?php echo $chamado_dados[2]?></h6>
+                            <p class="card-text"><?php echo $chamado_dados[3]?></p>
 
                         </div>
                     </div>
