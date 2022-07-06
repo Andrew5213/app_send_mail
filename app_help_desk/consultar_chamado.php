@@ -3,7 +3,7 @@ require_once 'validador_acesso.php';
 ?>
 <?php
 //agora vamos consultar os chamados para isso vamos abrir o arquivo
-$arquivo = fopen('arquivo.hd', 'r');
+$arquivo = fopen('../../help_desck/arquivo.hd', 'r');
 //agora vamos definir um array que armazena os chamados
 $chamados = [];
 //agora vamos percorrer cada linha do arquivo
