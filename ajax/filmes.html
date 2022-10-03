@@ -1,0 +1,51 @@
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Catalogo de filmes</title>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<script src="xmltojson.js"></script>
+<script >
+    function getFilmes(){
+
+    
+    let XMLHttp = new XMLHttpRequest();
+    XMLHttp.open('GET','http://localhost/ajax/filmes.xml');
+    XMLHttp.onreadystatechange=()=>{
+        if(XMLHttp.readyState==4 && XMLHttp.status==200){
+            let xmlFilmes = XMLHttp.responseText;
+            console.log(xmlFilmes);
+            let parser = new DOMParser();
+            domFilmes=parser.parseFromString(xmlFilmes,'text/xml');
+         
+           console.log(domFilmes);
+           jsonFilmes=  xmlToJson(domFilmes);
+           console.log(jsonFilmes);
+        }else if(XMLHttp.readyState==4 && XMLHttp.status==404){
+                //.... mais tarde vamos fazer 
+        }
+    }
+    
+    XMLHttp.send();
+}
+</script>
+
+</head>
+<body>
+    <nav class="navbar navbar-ligth bg-ligth mb-4">
+        <div class="container">
+        <div class="navbar-brand mb-0 h1">
+            <h3>Catalogo de filmes</h3>
+
+        </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <button type="button" onclick="getFilmes()">listar filmes</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
